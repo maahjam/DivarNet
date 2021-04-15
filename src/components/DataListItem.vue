@@ -1,14 +1,14 @@
 <template>
     <div>
-        <div style="overflow-x:auto;">
+        <div class="__table">
             <table>
                 <tr>
-                <th>مقدار جدید</th>
-                <th>مقدار قدیمی</th>
-                <th>فیلد</th>
-                <th>نام آگهی</th>
-                <th>تاریخ</th>
                 <th>نام تغییر دهنده</th>
+                <th>تاریخ</th>
+                <th>نام آگهی</th>
+                <th>فیلد</th>
+                <th>مقدار قدیمی</th>
+                <th>مقدار جدید</th>
                 </tr>
                 
                 <tr>
@@ -45,21 +45,21 @@ table {
   border-spacing: 0;
   width: 100%;
   height: 100%;
-  
 }
 
 th, td {
   text-align: right;
   padding: 8px;
+  color: #32335a;
 }
 
 th{
-  background: yellow;
-  border: 2px solid black;
+  background: lightskyblue;
+  border: 2px solid gray;
 }
 
 td{
-  border: 2px solid lightslategray;
+  border: 1px solid lightslategray;
   min-width: 150px;
 }
 
@@ -67,4 +67,8 @@ tr:nth-child(even){
   background-color: #f2f2f2
 }
 
+.__table{
+    overflow-x: auto;
+    direction: rtl;
+}
 </style>

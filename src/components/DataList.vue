@@ -1,6 +1,6 @@
 <template>
   <div>
-
+    <Filters/>
    <DataListItem/>
     
   </div>
@@ -8,6 +8,7 @@
 
 <script>
 import DataListItem from './DataListItem'
+import Filters from './Filters'
 export default {
   name: 'DataList',
   data () {
@@ -15,7 +16,8 @@ export default {
     }
   },
   components:{
-    DataListItem
+    DataListItem,
+    Filters
   }
 }
 </script>
