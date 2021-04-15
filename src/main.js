@@ -2,8 +2,10 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './pages/App'
+window.axios = require('axios');
 
 Vue.config.productionTip = false
+
 
 /* eslint-disable no-new */
 new Vue({

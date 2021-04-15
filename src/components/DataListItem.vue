@@ -11,23 +11,15 @@
                 <th>مقدار جدید</th>
                 </tr>
                 
-                <tr>
-                <td>Jill</td>
-                <td>Smith</td>
-                <td>50</td>
-                <td>50</td>
-                <td>50</td>
-                <td>50</td>
+                <tr >
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
                 </tr>
 
-                <tr>
-                <td>Eve</td>
-                <td>Jackson</td>
-                <td>94</td>
-                <td>94</td>
-                <td>94</td>
-                <td>94</td> 
-                </tr>
             </table>
         </div>
     </div>
@@ -35,7 +27,19 @@
 
 <script>
 export default {
-    name: 'DataListItem'
+    name: 'DataListItem',
+    data(){
+        return{
+            data: []
+        }
+    },
+   mounted() {
+    axios
+      .get("server/data.json")
+      .then(response => {
+        this.data = response.data.products;
+      });
+  },
 }
 </script>
 
