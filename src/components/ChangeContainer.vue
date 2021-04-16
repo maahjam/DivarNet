@@ -170,7 +170,7 @@ th {
   color: #32335a;
   min-width: 150px;
   width: calc((100% - 16px) / var(--cellsCount));
-  background: lightskyblue;
+  background: rgb(190, 230, 255);
   border: 2px solid gray;
 }
 
@@ -188,10 +188,10 @@ th {
 .date {
   cursor: pointer;
   -webkit-touch-callout: none;
-  -webkit-user-select: none; 
-  -khtml-user-select: none; 
-  -moz-user-select: none; 
-  -ms-user-select: none; 
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
 

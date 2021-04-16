@@ -60,7 +60,6 @@ export default {
 
 <style scoped>
 .container{ 
-    /* background: salmon; */
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
@@ -83,8 +82,6 @@ export default {
 
 .container div{
     justify-items: stretch;
-    /* background: seagreen; */
-    flex-grow: 4;
 }
 
 </style>
