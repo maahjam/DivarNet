@@ -11,7 +11,7 @@
                 <th>مقدار جدید</th>
                 </tr>
                 
-                <tr >
+                <tr>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -27,19 +27,12 @@
 
 <script>
 export default {
-    name: 'DataListItem',
+    name: 'ChangeItem',
     data(){
         return{
             data: []
         }
     },
-   mounted() {
-    axios
-      .get("server/data.json")
-      .then(response => {
-        this.data = response.data.products;
-      });
-  },
 }
 </script>
 
