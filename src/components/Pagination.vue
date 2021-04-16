@@ -32,6 +32,11 @@ export default {
    props: {
     totalPages: Number,
   },
+   mounted(){
+      if (this.$route.query.page){
+          this.currentPage = parseInt(this.$route.query.page)
+      }
+  },
   methods:{
      onNextClicked(){
          if (this.currentPage + 1 <= this.totalPages){
@@ -54,13 +59,12 @@ export default {
    justify-content: end;
    flex-wrap: nowrap;
    overflow-x: auto;
-   margin-top: 50px;
+   margin-top: 32px;
 }
 
 .buttons{
     min-width: 40px;
     height: 40px;
-    margin: 10px;
     text-align: center;
     line-height: 40px;
     cursor: pointer;
@@ -71,8 +75,8 @@ export default {
 
 .result{
     height: 50px;
-    margin: 10px;
     line-height: 40px;
+    margin-left: 10px;
     text-align: center;
 }
 
@@ -80,9 +84,9 @@ export default {
     width: 60px;
     min-width: 60px;
     height: 38px;
-    margin: 10px;
-    margin-left: 0px;
     outline: none;
+    margin-left: 4px;
+    margin-right: 10px;
     direction: rtl;
     border: 1px solid darkgray;
     border-radius: 2px;

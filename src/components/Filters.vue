@@ -34,7 +34,7 @@ export default {
     flex-direction: row-reverse;
     justify-content: space-between;
     gap: 16px;
-    margin-bottom: 50px;
+    margin-bottom: 32px;
 }
 
 .container div{

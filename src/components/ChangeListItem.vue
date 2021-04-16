@@ -34,6 +34,10 @@ td{
   text-align: center;
   padding: 8px;
   color: #32335a;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 1px;
+  text-overflow: ellipsis;
   min-width: 150px;
   width: calc((100% - 16px) / var(--cellsCount));
   border: 1px solid lightslategray;
@@ -43,6 +47,11 @@ tr:nth-child(even){
   background-color: #f2f2f2
 }
 
+tr{
+  min-height: 50px;
+  height: 50px;
+  max-height: 50px;
+}
 
 .star{
     min-width: 25px;

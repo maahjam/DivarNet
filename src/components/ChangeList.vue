@@ -58,9 +58,13 @@ export default {
       onCurrentPageChanged(newCurrentPage){
         this.currentPage = newCurrentPage
         this.changes = data.slice(((this.currentPage - 1) * this.perPage), (this.currentPage * this.perPage))
+        this.$router.push({path: '/', query: { page: this.currentPage } })
       }
     },
     mounted(){
+      if (this.$route.query.page){
+          this.currentPage = parseInt(this.$route.query.page)
+      }
       this.totalPages = Math.ceil(data.length / this.perPage)
       this.changes = data.slice(((this.currentPage - 1) * this.perPage), (this.currentPage * this.perPage))
       this.cellsCount = document.querySelector('#change-table').rows[0].cells.length
@@ -95,5 +99,11 @@ th {
     min-width: 25px;
     width: 25px;
     max-width: 25px;
+}
+
+tr{
+    min-height: 50px;
+    height: 50px;
+    max-height: 50px;
 }
 </style>
