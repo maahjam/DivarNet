@@ -56,10 +56,10 @@ th {
   text-align: center;
   padding: 8px;
   color: #32335a;
+  min-width: 150px;
   width: calc((100% - 16px) / var(--cellsCount));
   background: lightskyblue;
   border: 2px solid gray;
-  min-width: 150px;
 }
 
 .__table{

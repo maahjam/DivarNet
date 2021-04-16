@@ -5,7 +5,7 @@
             <td>{{change.title}}</td>
             <td>{{change.field}}</td>
             <td>{{change.old_value}}</td>
-            <td>{{change.new_value}}</td>
+            <td>{{change._value}}</td>
          </tr>
    
 </template>
@@ -27,9 +27,9 @@ td{
   text-align: center;
   padding: 8px;
   color: #32335a;
+  min-width: 150px;
   width: calc((100% - 16px) / var(--cellsCount));
   border: 1px solid lightslategray;
-  min-width: 150px;
 }
 
 tr:nth-child(even){
