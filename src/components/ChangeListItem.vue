@@ -5,7 +5,7 @@
             <td>{{change.title}}</td>
             <td>{{change.field}}</td>
             <td>{{change.old_value}}</td>
-            <td>{{change._value}}</td>
+            <td>{{change.new_value}}</td>
          </tr>
    
 </template>
