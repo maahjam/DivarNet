@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <ChangeListPage/>
+    <ChangeContainer/>
   </div>
 </template>
 
 <script>
-import ChangeListPage from './ChangeListPage'
+import ChangeContainer from '../components/ChangeContainer'
 
 export default {
   name: 'App',
   components: {
-    ChangeListPage
+    ChangeContainer
   }
 }
 </script>
