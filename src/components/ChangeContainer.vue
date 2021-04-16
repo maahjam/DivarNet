@@ -73,6 +73,7 @@ export default {
         this.date = date
         this.title = title
         this.field = field
+        this.currentPage = 1
         DataManager.filterData(this.name, this.date, this.title, this.field)
         this.changes = DataManager.getData(this.currentPage, this.perPage)
         this.totalPages = Math.ceil(DataManager.getTotalDataCount() / this.perPage)
