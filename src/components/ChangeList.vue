@@ -6,7 +6,7 @@
                 <tr>
                 <th class="star"></th>
                 <th>نام تغییر دهنده</th>
-                <th>تاریخ</th>
+                <th class="date" @click="onDateClicked">{{getDateLableString()}}</th>
                 <th>نام آگهی</th>
                 <th>فیلد</th>
                 <th>مقدار قدیمی</th>
@@ -39,7 +39,8 @@ export default {
             selectedChangesId: [],
             perPage: 10,
             currentPage: 1,
-            totalPages: 1
+            totalPages: 1,
+            ascSortByDate: null
         }
     },
     components:{
@@ -58,12 +59,53 @@ export default {
       onCurrentPageChanged(newCurrentPage){
         this.currentPage = newCurrentPage
         this.changes = data.slice(((this.currentPage - 1) * this.perPage), (this.currentPage * this.perPage))
-        this.$router.push({path: '/', query: { page: this.currentPage } })
+        this.pushQuery()
+        
+      },
+      pushQuery(){
+        let query = {}
+        if (this.currentPage !== 1){
+           query.page = this.currentPage
+        }
+        if (this.ascSortByDate !== null){
+           query.ascSortByDate = this.ascSortByDate
+        }
+        this.$router.push({path: '/', query: query })
+      },
+      getDateLableString(){
+        if (this.ascSortByDate == null){
+          return "تاریخ"
+        }else if (this.ascSortByDate){
+          return "تاریخ" + "   " + '▲'
+        }else{
+          return "تاریخ" + "   " + '▼'
+        }
+      },
+      onDateClicked(){
+        if (this.ascSortByDate == null) {
+          this.ascSortByDate = true
+        }else{
+          this.ascSortByDate = !this.ascSortByDate
+        }
+        this.sortDataByDate(this.ascSortByDate)
+        this.pushQuery()
+      },
+      sortDataByDate(isAscending){
+        if (isAscending){
+          data.sort((a, b) => new Date(b.date) - new Date(a.date))
+        }else{
+          data.sort((a, b) => new Date(a.date) - new Date(b.date))
+        }
+        this.changes = data.slice(((this.currentPage - 1) * this.perPage), (this.currentPage * this.perPage))
       }
     },
     mounted(){
       if (this.$route.query.page){
           this.currentPage = parseInt(this.$route.query.page)
+      }
+       if (this.$route.query.ascSortByDate){
+          this.ascSortByDate = this.$route.query.ascSortByDate == 'true'
+          this.sortDataByDate(this.ascSortByDate)
       }
       this.totalPages = Math.ceil(data.length / this.perPage)
       this.changes = data.slice(((this.currentPage - 1) * this.perPage), (this.currentPage * this.perPage))
@@ -99,6 +141,18 @@ th {
     min-width: 25px;
     width: 25px;
     max-width: 25px;
+}
+
+.date{
+   cursor: pointer;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+
 }
 
 tr{
