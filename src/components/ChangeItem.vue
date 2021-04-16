@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: 'ChangeListItem',
+  name: 'ChangeItem',
   props: {
     change: {
       type: Object,
