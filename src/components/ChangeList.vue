@@ -2,7 +2,6 @@
     <div>
         <div class="__table">
             <table id="change-table">
-
               <thead>
                 <tr>
                 <th class="star"></th>
@@ -21,13 +20,15 @@
 
             </table>
         </div>
+        <Pagination :totalPages="totalPages" @onCurrentPageChanged="onCurrentPageChanged"/>
     </div>
 </template>
 
 <script>
 import ChangeListItem from './ChangeListItem'
-import data from '../assets/data.json'
+import data from '../assets/data1.json'
 import LocalStorageManager from '../utilities/LocalStorageManager'
+import Pagination from './Pagination'
 
 export default {
     name: 'ChangeList',
@@ -35,27 +36,36 @@ export default {
         return{
             changes: [],
             cellsCount: 0,
-            selectedChangesId: []
+            selectedChangesId: [],
+            perPage: 10,
+            currentPage: 1,
+            totalPages: 1
         }
     },
     components:{
-      ChangeListItem
+      ChangeListItem,
+      Pagination
     },
     methods:{
-      onChangeClicked(changeId){
+    onChangeClicked(changeId){
         if (this.selectedChangesId.includes(changeId)){
           LocalStorageManager.removeSelectedChangeId(changeId)
         }else{
           LocalStorageManager.addSelectedChangeId(changeId)
         }
         this.selectedChangesId = LocalStorageManager.getSelectedChangesId()
+      },
+      onCurrentPageChanged(newCurrentPage){
+        this.currentPage = newCurrentPage
+        this.changes = data.slice(((this.currentPage - 1) * this.perPage), (this.currentPage * this.perPage))
       }
     },
     mounted(){
-      this.changes = data.slice(0, 10)
+      this.totalPages = Math.ceil(data.length / this.perPage)
+      this.changes = data.slice(((this.currentPage - 1) * this.perPage), (this.currentPage * this.perPage))
       this.cellsCount = document.querySelector('#change-table').rows[0].cells.length
       this.selectedChangesId = LocalStorageManager.getSelectedChangesId()
-    },
+    }
 }
 </script>
 
