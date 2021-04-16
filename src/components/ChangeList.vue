@@ -5,6 +5,7 @@
 
               <thead>
                 <tr>
+                <th class="star"></th>
                 <th>نام تغییر دهنده</th>
                 <th>تاریخ</th>
                 <th>نام آگهی</th>
@@ -15,7 +16,7 @@
               </thead>
 
               <tbody>
-                <ChangeListItem v-for="(change, i) in changes" :key="i" :change="change" :cellsCount="cellsCount"/>
+                <ChangeListItem v-for="(change, i) in changes" :key="i" :change="change" :cellsCount="cellsCount" :isSelected="selectedChangesId.includes(change.id)" @onMarked="onChangeClicked"/>
               </tbody>
 
             </table>
@@ -26,21 +27,34 @@
 <script>
 import ChangeListItem from './ChangeListItem'
 import data from '../assets/data.json'
+import LocalStorageManager from '../utilities/LocalStorageManager'
 
 export default {
     name: 'ChangeList',
     data(){
         return{
             changes: [],
-            cellsCount: 0
+            cellsCount: 0,
+            selectedChangesId: []
         }
     },
     components:{
       ChangeListItem
     },
+    methods:{
+      onChangeClicked(changeId){
+        if (this.selectedChangesId.includes(changeId)){
+          LocalStorageManager.removeSelectedChangeId(changeId)
+        }else{
+          LocalStorageManager.addSelectedChangeId(changeId)
+        }
+        this.selectedChangesId = LocalStorageManager.getSelectedChangesId()
+      }
+    },
     mounted(){
-      this.changes = data.slice(0, 10);
-      this.cellsCount = document.querySelector('#change-table').rows[0].cells.length;
+      this.changes = data.slice(0, 10)
+      this.cellsCount = document.querySelector('#change-table').rows[0].cells.length
+      this.selectedChangesId = LocalStorageManager.getSelectedChangesId()
     },
 }
 </script>
@@ -65,5 +79,11 @@ th {
 .__table{
     overflow-x: auto;
     direction: rtl;
+}
+
+.star{
+    min-width: 25px;
+    width: 25px;
+    max-width: 25px;
 }
 </style>

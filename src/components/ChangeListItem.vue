@@ -1,5 +1,6 @@
 <template>
          <tr>
+            <td class="star" @click="onChangeClicked">{{isSelected ? '*' : ''}}</td>
             <td>{{change.name}}</td>
             <td>{{change.date}}</td>
             <td>{{change.title}}</td>
@@ -17,8 +18,14 @@ export default {
     change: {
       type: Object,
     },
-    cellsCount: Number
+    cellsCount: Number,
+    isSelected: Boolean
   },
+  methods:{
+    onChangeClicked(event){
+      this.$emit('onMarked', this.change.id)
+    }
+  }
 }
 </script>
 
@@ -34,5 +41,13 @@ td{
 
 tr:nth-child(even){
   background-color: #f2f2f2
+}
+
+
+.star{
+    min-width: 25px;
+    width: 25px;
+    max-width: 25px;
+    cursor: pointer;
 }
 </style>
