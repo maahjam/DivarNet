@@ -76,7 +76,7 @@ export default {
 .container input{
     height: 30px;
     width: 200px;
-    outline: none;
+    outline-color: rgb(190, 230, 255);
     direction: rtl;
 }
 

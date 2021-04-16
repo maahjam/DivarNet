@@ -171,7 +171,7 @@ th {
   min-width: 150px;
   width: calc((100% - 16px) / var(--cellsCount));
   background: rgb(190, 230, 255);
-  border: 2px solid gray;
+  border: 1px solid black;
 }
 
 .__table {

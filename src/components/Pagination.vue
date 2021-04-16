@@ -83,7 +83,13 @@ export default {
   -khtml-user-select: none; 
   -moz-user-select: none; 
   -ms-user-select: none; 
-  user-select: none;       
+  user-select: none;      
+  font-size: 12px; 
+  color: #32335a;
+}
+
+.buttons:hover{
+  background: rgb(190, 230, 255);;
 }
 
 .result {
@@ -91,6 +97,7 @@ export default {
   line-height: 40px;
   margin-left: 10px;
   text-align: center;
+  color: #32335a;
 }
 
 .container input {
@@ -103,14 +110,16 @@ export default {
   direction: rtl;
   border: 1px solid darkgray;
   border-radius: 2px;
+  outline-color: rgb(190, 230, 255);
+  color: #32335a;
 }
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-/* Firefox */
 input[type="number"] {
   -moz-appearance: textfield;
   text-align: left;
