@@ -1,4 +1,4 @@
-import mockData from '../assets/data1.json'
+import mockData from '../assets/data.json'
 
 class DataManager {
 
