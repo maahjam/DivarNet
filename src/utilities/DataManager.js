@@ -1,4 +1,4 @@
-import mockData from '../assets/data1.json'
+import mockData from '../assets/data.json'
 import BinarySearchTree from './BST'
 
 class DataManager {
@@ -6,12 +6,15 @@ class DataManager {
     constructor() {
       this._data = mockData;
 
-      this._bst = new BinarySearchTree();
-      let data = this._data;
-      data.sort((a, b) => new Date(b.date) - new Date(a.date));
-      for (let i = 0; i < data.length; i++) {
-        this._bst.insert(data[i]);
-      }
+    //Please uncomment below codes to use BinarySearchTree for date
+
+    //   this._bst = new BinarySearchTree();
+    //   let data = this._data;
+    //   data.sort((a, b) => new Date(b.date) - new Date(a.date));
+    //   for (let i = 0; i < data.length; i++) {
+    //     this._bst.insert(data[i]);
+    //   }
+
     }
   
     getData = (currentPage, perPage) => {
@@ -25,7 +28,9 @@ class DataManager {
     filterData = (name, date, title, field) => {
         let filteredData = mockData;
         if (date){
+            //Please uncomment below code to use BinarySearchTree for date
             // filteredData = this._bst.find(date);
+            //Please comment below code to use BinarySearchTree for date
             filteredData = filteredData.filter(d => (d.date == date));
         }
         if (name){
